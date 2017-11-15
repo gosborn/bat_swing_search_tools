@@ -1,6 +1,6 @@
 import unittest
 
-from bat_swing import (
+from bat_swing_search import (
     search_continuity_above_value,
     back_search_continuity_within_range,
     search_continuity_above_value_two_signals,

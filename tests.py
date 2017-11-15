@@ -5,6 +5,8 @@ from bat_swing_search import (
     back_search_continuity_within_range,
     search_continuity_above_value_two_signals,
     search_multi_continuity_within_range,
+    map_data_to_index,
+    validate_params,
 )
 
 
@@ -64,6 +66,70 @@ class SearchMultiContinuityWithinRange(unittest.TestCase):
     def test_value_does_not_exist(self):
         result = search_multi_continuity_within_range('ax', 0, 9, 2, 5, 3, SWING_FIXTURE)
         self.assertEqual(result, [])
+
+
+class UtilityTests(unittest.TestCase):
+
+    def test_map_data_to_index(self):
+        data = 'foo'
+        with self.assertRaises(Exception):
+            map_data_to_index(data)
+
+    def test_validate_params_index_begin(self):
+        params = {
+            'index_begin': -1
+        }
+        with self.assertRaises(Exception):
+            validate_params(params)
+
+    def test_validate_params_index_end(self):
+        params = {
+            'index_end': -1
+        }
+        with self.assertRaises(Exception):
+            validate_params(params)
+
+    def test_validate_params_threshold(self):
+        params = {
+            'index_end': 'foo'
+        }
+        with self.assertRaises(Exception):
+            validate_params(params)
+
+    def test_validate_params_win_length(self):
+        params = {
+            'win_length': 0
+        }
+        with self.assertRaises(Exception):
+            validate_params(params)
+
+    def test_validate_params_threshold_low(self):
+        params = {
+            'threshold_low': 'foo'
+        }
+        with self.assertRaises(Exception):
+            validate_params(params)
+
+    def test_validate_params_threshold_high(self):
+        params = {
+            'threshold_high': 'foo'
+        }
+        with self.assertRaises(Exception):
+            validate_params(params)
+
+    def test_validate_params_threshold_1(self):
+        params = {
+            'threshold_1': 'foo'
+        }
+        with self.assertRaises(Exception):
+            validate_params(params)
+
+    def test_validate_params_threshold_2(self):
+        params = {
+            'threshold_2': 'foo'
+        }
+        with self.assertRaises(Exception):
+            validate_params(params)
 
 
 if __name__ == '__main__':

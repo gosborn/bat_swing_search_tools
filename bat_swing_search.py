@@ -1,14 +1,19 @@
 import csv
+import sys
 
 INDEX_EXCEPTION_MESSAGE = 'index_begin or index_end does not exist in data set!'
 
 swing_data = []
 
-with open('latestSwing.csv', 'rb') as csv_file:
-    reader = csv.reader(csv_file)
-    for csv_row in reader:
-        swing_data.append([csv_row[0], float(csv_row[1]), float(csv_row[2]), float(csv_row[3]),
-                           float(csv_row[4]), float(csv_row[5]), float(csv_row[6])])
+if 'read_csv' in sys.argv:
+    try:
+        with open('latestSwing.csv', 'rb') as csv_file:
+            reader = csv.reader(csv_file)
+            for csv_row in reader:
+                swing_data.append([csv_row[0], float(csv_row[1]), float(csv_row[2]), float(csv_row[3]),
+                                   float(csv_row[4]), float(csv_row[5]), float(csv_row[6])])
+    except IOError:
+        print('Could not read latestSwing.csv, is it in current directory?')
 
 
 def search_continuity_above_value(data, index_begin, index_end, threshold, win_length, swing_to_analyze=None):

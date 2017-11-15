@@ -1,3 +1,4 @@
+- Requirements: Python 2.7.*
 - Intended for use with a csv file called latestSwing.csv in this directory
 - latestSwing.csv should contain 7 columns, each row should contain 7 non-null floats or integers
     - Column 1: timeStamp
@@ -7,6 +8,8 @@
     - Column 5: wx
     - Column 6: wy
     - Column 7: wz
- 
-- With latestSwing.csv present, to run code interactively in the python interpreter, in terminal run `python -i bat_swing_search.py`
+
 - To run tests, in terminal run `python tests.py -v`
+- With latestSwing.csv present, to run code interactively in the python interpreter, in terminal run `python -i bat_swing_search.py read_csv`
+- The functions `search_continuity_above_value`, `back_search_continuity_within_range` and `search_continuity_above_value_two_signals` will return a number - the first index that passes the criteria.
+- `search_multi_continuity_within_range` will return a 2D array. Each subarray will contain two numbers, the first and last indicies for the range that passes the criteria.

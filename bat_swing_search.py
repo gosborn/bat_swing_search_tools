@@ -126,7 +126,7 @@ def validate_params(params):
         'threshold': validate_is_number,
         'index_begin': validate_non_negative_number,
         'index_end': validate_non_negative_number,
-        'win_length': validate_postive_number,
+        'win_length': validate_positive_number,
         'threshold_low': validate_is_number,
         'threshold_high': validate_is_number,
         'threshold_1': validate_is_number,
@@ -148,7 +148,7 @@ def validate_non_negative_number(param, param_name):
         raise Exception('{} must be zero or greater!'.format(param_name))
 
 
-def validate_postive_number(param, param_name):
+def validate_positive_number(param, param_name):
     validate_is_number(param, param_name)
     if param <= 0:
         raise Exception('{} must be greater than zero!'.format(param_name))
